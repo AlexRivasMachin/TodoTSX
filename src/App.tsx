@@ -13,8 +13,10 @@ const App = (): JSX.Element =>{
 
   return (
     <>
+    <div className="todoapp">
       <h1>Todo</h1>
       <Todos todos={todos}/>
+    </div>
     </>
   )
 }
