@@ -11,6 +11,11 @@ export const Filters: React.FC<Props> = (
     { filterSelected, onFilterChange }
 ) => {
 
+    const handleClick = (filter: FilterValue) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault()
+        onFilterChange(filter)
+      }
+
     return (
         <ul className="filters">
             {
@@ -19,15 +24,9 @@ export const Filters: React.FC<Props> = (
                     const className = isSelected ? 'selected' : '';
                     return (
                         <li key={key}>
-                            <a
-                                className={className}
-                                href={href}
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    onFilterChange(key as FilterValue);
-                                }}
-                            >
-                                {literal}
+                            <a href={href}
+                            className={className}
+                            onClick={handleClick(key as FilterValue)}>{literal}
                             </a>
                         </li>
                     );

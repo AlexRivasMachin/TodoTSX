@@ -11,6 +11,11 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  width: 100%;
+  height: 100%;
+  display: flex;
+  min-width: 100vw;
 }
 
 a {
@@ -28,6 +33,19 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  width: 100%;
+}
+
+body #root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+
 }
 
 h1 {
@@ -53,6 +71,103 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
+.todoapp{
+  width: 80%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #1a1a1a;
+  margin: 50px;
+}
+
+.todoapp h1 {
+  margin-bottom: 1em;
+}
+
+.todoapp form input {
+  width: 100%;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  border: 1px solid #1a1a1a;
+  border-radius: 8px;
+  margin-bottom: 1em;
+}
+
+.todoapp ul {
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.todoapp ul li:first-child {
+  border-top: 1px solid #575757;
+}
+
+.todoapp ul li {
+  display: flex;
+  justify-content: space;
+  align-items: center;
+  padding: 0.6em 1.2em;
+  border-bottom: 1px solid #575757;
+  width: 90%;
+
+}
+
+.todoapp ul li div button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #f02626;
+  align-self: flex-end;
+}
+
+.todoapp ul li div button:hover {
+  color: #ff4d4d;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1em;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.footer span {
+  font-size: 1.3em;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1em;
+  flex-direction: row;
+}
+
+.filters ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-direction: row;
+}
+
+
 
 @media (prefers-color-scheme: light) {
   :root {

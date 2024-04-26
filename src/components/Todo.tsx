@@ -23,7 +23,9 @@ export const Todo:React.FC<Props> = ({ id, title, completed, onRemove, onToggle 
                 onClick={() => {
                     onRemove(id) // ya esta tipado arriba
                 }}
-            />
+            >
+                Remove
+                </button>
         </div>
     )   
 }

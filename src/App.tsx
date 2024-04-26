@@ -4,6 +4,7 @@ import {Todos} from './components/Todos'
 import { TODO_FILTER } from './CONSTS'
 import { FilterValue } from './types'
 import { Footer } from './components/Footer'
+import { Header } from './components/Header'
 
 const mockTodos = [
   { id: 1, title: 'Learn React', completed: true },
@@ -14,9 +15,20 @@ const mockTodos = [
 const App = (): JSX.Element =>{
   const [todos, setTodos] = useState(mockTodos)
 
-  const [filterSelected, setFilterSelected] = useState(TODO_FILTER.ALL);
+  const [filterSelected, setFilterSelected] = useState<FilterValue>(() => {
+    // read from url query params using URLSearchParams
+    const params = new URLSearchParams(window.location.search)
+    const filter = params.get('filter') as FilterValue | null
+    if (filter === null) return TODO_FILTER.ALL
+    // check filter is valid, if not return ALL
+    return Object
+      .values(TODO_FILTER)
+      .includes(filter)
+      ? filter
+      : TODO_FILTER.ALL
+  })
 
-  const handleFilterChange = (filter: FilterValue): void => {
+  const onFilterChange = (filter: FilterValue): void => {
     setFilterSelected(filter)
   }
 
@@ -40,22 +52,43 @@ const App = (): JSX.Element =>{
     setTodos(newTodos)
   }
 
+  const handleNewTodo = (title: string):void => {
+    const newTodo = {
+      id: todos.length + 1,
+      title,
+      completed: false
+    }
+    const newTodos = [...todos, newTodo]
+    setTodos(newTodos)
+}
+
   const activeCount = todos.filter((todo) => !todo.completed).length
+  const completedCount = todos.length - activeCount
+  const filteredTodos = todos.filter((todo) => {
+    if (filterSelected === TODO_FILTER.ACTIVE) {
+      return !todo.completed
+    }
+    if (filterSelected === TODO_FILTER.COMPLETED) {
+      return todo.completed
+    }
+    return todo
+  })
 
   return (
     <>
     <div className="todoapp">
       <h1>Todo</h1>
+      <Header onAddTodo={handleNewTodo}/>
       <Todos 
         onToggle = { handleToggle }
         onRemove = { handleRemove }
-        todos={todos}
+        todos={filteredTodos}
       />
       <Footer 
         activeCount={activeCount}
-        completedCount={todos.length - activeCount}
+        completedCount={completedCount}
         filterSelected={filterSelected}
-        handleFilterChange={handleFilterChange}
+        onFilterChange={onFilterChange}
         onClearCompleted={() => {
           const newTodos = todos.filter((todo) => !todo.completed)
           setTodos(newTodos)}
