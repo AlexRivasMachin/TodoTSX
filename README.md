@@ -1,7 +1,6 @@
-![alt text](public/TODO.png "TodoTSX")
-
 # TodoTSX with TypeScript and React
-It is a simple wepApp that allows you to add, delete and mark todos as done. It is built with TypeScript and React.
+![alt text](public/TODO.png "TodoTSX")
+WepApp that allows you to add, delete and mark todos as done. It is built with TypeScript and React.
 
 ## Technologies 🧰
 - TypeScript 🟦
