@@ -31,9 +31,10 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
   min-height: 100vh;
   width: 100%;
+  justify-content: center;
+
 }
 
 body #root {
@@ -43,14 +44,15 @@ body #root {
   flex-direction: column;
   padding: 0;
   margin: 0;
-  justify-content: center;
   align-items: center;
-
+  justify-content: stretch;
+  align-self: center;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  margin-bottom: 0;
 }
 
 button {
@@ -81,21 +83,39 @@ button:focus-visible {
   justify-content: center;
   background-color: #1a1a1a;
   margin: 50px;
+  margin-top: 10px;
+  padding: 50px;
+  padding-bottom: 10px;
+  transition: all 0.25s ease;
 }
 
 .todoapp h1 {
   margin-bottom: 1em;
 }
 
+.todoapp form {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .todoapp form input {
-  width: 100%;
-  padding: 0.6em 1.2em;
+  width: 120%;
+  padding: 1em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
   border: 1px solid #1a1a1a;
   border-radius: 8px;
   margin-bottom: 1em;
+  outline: none;
+}
+
+.todoapp form input:focus {
+  border-color: #646cff;
+  border: 1px solid #646cff;
 }
 
 .todoapp ul {
@@ -121,8 +141,18 @@ button:focus-visible {
   padding: 0.6em 1.2em;
   border-bottom: 1px solid #575757;
   width: 90%;
-
+  text-decoration: none;
 }
+
+.todoapp ul li div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  text-decoration: none;
+}
+
+
 
 .todoapp ul li div button {
   background-color: transparent;
@@ -130,10 +160,22 @@ button:focus-visible {
   cursor: pointer;
   color: #f02626;
   align-self: flex-end;
+  font-size: 1.2em;
+  border: 1px solid #f02626;
+  text-decoration: none;
+  text-decoration-color: transparent;
 }
 
 .todoapp ul li div button:hover {
   color: #ff4d4d;
+  border-color: #ff4d4d;
+  background-color: #ff4d4d18;
+  text-decoration: transparent;
+}
+
+.todoapp ul li div label {
+  text-align: start;
+  font-size: 1.1em;
 }
 
 .footer {
@@ -143,21 +185,23 @@ button:focus-visible {
   margin-top: 1em;
   flex-direction: column;
   margin-top: 30px;
+  width: 100%;
 }
 
 .footer span {
   font-size: 1.3em;
 }
 
-.filters {
+.todoapp .footer .filters {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 1em;
   flex-direction: row;
+  width: 100%;
 }
 
-.filters ul {
+.todoapp .footer .filters ul {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -165,19 +209,52 @@ button:focus-visible {
   padding: 0;
   margin: 0;
   flex-direction: row;
+  width: 100%;
+}
+
+.todoapp .footer .filters  li {
+  display: flex;
+  flex-direction: row;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.todoapp .footer .filters a{
+  margin: 0 0.5em;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  border: 1px solid #ffffff;
+  padding: 0.6em 1.2em;
+  border-radius: 10px;
+  color: #ffffff;
+  width: 100%;
+}
+
+.todoapp .footer .filters ul li{
+  border: 1px solid #8287ee;
+}
+
+.todoapp .footer .filters  .selected {
+  border: 1px solid #535bf2;
+  color: #535bf2;
+  background-color:#535bf221;
 }
 
 
+.todoapp .footer  button {
+  cursor: pointer;
+  color: #f0a626;
+  font-size: 1em;
+  text-decoration: none;
+  margin-bottom: 10px;
+  margin-top: 30px;
+  align-self: flex-end;
+}
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.todoapp .footer  button:hover {
+  text-decoration: underline;
+  border: 1px solid transparent;
 }

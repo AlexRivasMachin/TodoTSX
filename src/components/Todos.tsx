@@ -11,8 +11,21 @@ interface Props {
 
 //Tipamos un functional component con React.FC<Props> y le pasamos un objeto con la propiedad todos que es un array de objetos de tipo Todo
 export const Todos: React.FC<Props> = ({ todos, onRemove, onToggle }) => {
+
+  // const [currentPage, setCurrentPage] = React.useState(1);
+  // const todosPerPage = 6;
+
+  // const indexOfLastTodo = currentPage * todosPerPage;
+  // const indexOfFirstTodo = indexOfLastTodo - todosPerPage;
+  // const currentTodos = todos.slice(indexOfFirstTodo, indexOfLastTodo);
+
+  // const totalPageNumbers = Math.ceil(todos.length / todosPerPage);
+
+  // const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
   return (
-    <ul>
+    <>
+    <ul className="todos">
       {todos.map((todo) => (
         <li 
         key={todo.id}
@@ -29,5 +42,13 @@ export const Todos: React.FC<Props> = ({ todos, onRemove, onToggle }) => {
         </li>
       ))}
     </ul>
+    {/* <ul className="pagination">
+      {Array.from({ length: totalPageNumbers }).map((_, index) => (
+        <li key={index}>
+          <button onClick={() => paginate(index + 1)}>{index + 1}</button>
+        </li>
+      ))}
+    </ul> */}
+    </>
   );
 }

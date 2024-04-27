@@ -1,6 +1,6 @@
 import { FILTER_BUTTONS } from '../CONSTS';
 import { FilterValue } from '../types';
-
+import "./Filters.css";
 
 interface Props {
     filterSelected: FilterValue;

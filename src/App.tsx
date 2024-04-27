@@ -76,9 +76,10 @@ const App = (): JSX.Element =>{
 
   return (
     <>
-    <div className="todoapp">
-      <h1>Todo</h1>
-      <Header onAddTodo={handleNewTodo}/>
+    <h1>TodoTSX</h1>
+    <p>by Alex Rivas Machin</p>
+    <div className="todoapp">      <Header onAddTodo={handleNewTodo}/>
+    
       <Todos 
         onToggle = { handleToggle }
         onRemove = { handleRemove }
