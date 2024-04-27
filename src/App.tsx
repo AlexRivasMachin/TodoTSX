@@ -76,7 +76,12 @@ const App = (): JSX.Element =>{
 
   return (
     <>
-    <h1>TodoTSX</h1>
+    <h1>Todo<span style={{color : '#2d79c7'}}>TSX</span></h1>
+    <div className="links">
+      <a href="https://github.com/AlexRivasMachin" target='_blank'>Github</a>
+      <a href="https://www.linkedin.com/in/alex-rivas-machin/" target='_blank'>Linkedin</a>
+      <a href="https://alexdev.eus/" target='_blank'>Portfolio</a>
+    </div>
     <p>by Alex Rivas Machin</p>
     <div className="todoapp">      <Header onAddTodo={handleNewTodo}/>
     
